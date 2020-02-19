@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
+import codes from './csi-codes.js';
 
 import styled from 'styled-components'
 
@@ -22,7 +23,7 @@ const Frame = styled.div`
 const Input = styled.input`
    height: 40px;
    width: 400px;
-   font-size: 32px;
+   font-size: 28px;
    margin-bottom: 24px;
 `
 
@@ -50,40 +51,59 @@ class App extends React.Component {
       super(props)
       this.state = {
          entries: ["hello"],
+         currentValue: '',
       }
 
-      this.getSuggestion = this.changeHeight.bind(this)
-      this.addToList = this.changeHeight.bind(this)
-      this.removeFromList = this.changeHeight.bind(this)
-   }
-
-   changeHeight(event) {
-      this.setState({ height: event.target.value })
+      this.getSuggestion = this.getSuggestion.bind(this)
+      this.addToList = this.addToList.bind(this)
+      this.removeFromList = this.removeFromList.bind(this)
+      this.handleChange = this.handleChange.bind(this)
    }
 
    getSuggestion(event) {
-      
+
    }
 
    addToList(event) {
-      this.setState({ entries: this.state.entries.push(event.target.value) })
+      if(this.state.currentValue !== '') {
+         this.setState({
+            entries: [...this.state.entries, this.state.currentValue],
+            currentValue: ''
+         })
+         console.log(this.state.entries)
+      }
+      
    }
 
-   removeFrom
+   removeFromList(event) {
+
+   }
+
+   handleChange(event) {
+      this.setState({ currentValue: event.target.value })
+   }
 
    render() {
+      let list = this.state.entries
+
       return (
          <Frame>
             <h3>
                Hello world!
            </h3>
             <Suggester>
-               <Input type="text" placholder="Type keywords here" />
+               <Input
+                  type="text"
+                  placeholder="Type keywords here"
+                  value={this.state.currentValue}
+                  onChange={this.handleChange} 
+                  onSubmit={this.addToList}
+                  />
                <button onClick={this.addToList}>Add to list</button>
             </Suggester>
-            <p>
-               {this.state.entries.map(word => <p>{word}</p>)}
-            </p>
+            <div>
+               {list.map((word) => <p key={word}>{word}</p>)}
+            </div>
          </Frame>
       );
    }
