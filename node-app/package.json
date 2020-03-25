@@ -1,0 +1,11 @@
+{
+  "name": "covid19-api",
+  "version": "1.0.0",
+  "description": "Pull from public coiv19 API",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Morgan Keys",
+  "license": "ISC"
+}
