@@ -46,29 +46,6 @@ const Addressee = styled.p`
   max-width: 300px;
 `;
 
-// const ToFieldGrid = styled.div`
-//   display: grid;
-//   grid-template-columns: repeat(3, 33%);
-//   grid-template-rows: repeat(auto-fit, 46px);
-//   grid-auto-flow: column;
-//   grid-auto-rows: min(46px);
-
-//   border: 1px solid #fff;
-//   width: 60%;
-//   min-height: 400px;
-
-//   padding: 16px;
-//   margin-bottom: 32px;
-// `;
-
-// const AddresseeGrid = styled.p`
-//   margin: 0 8px 8px 8px;
-//   padding: 6px;
-//   background-color: #ffffff11;
-//   word-wrap: break-word;
-//   max-height: 100px;
-// `;
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -84,10 +61,10 @@ class App extends React.Component {
   }
 
   render() {
-    let list = ['Company Name is looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong 0'];
+    let list = [];
 
     for (let i = 1; i <= 29; i++) {
-      list.push(`Company Name ${i}`);
+      list.push(`Bid Package Name ${i}`);
     }
     console.log(list);
 
@@ -96,6 +73,8 @@ class App extends React.Component {
          <h1>Wrapping the recipient field</h1>
 
         <ToFieldOpen>
+          <Addressee style={{height:'280px'}}>Expanded Bid Package</Addressee>
+          <Addressee>Bid Package name, which should wrap when it is very long...</Addressee>
           {list.map((name, index) => (
             <Addressee key={index}>{name}</Addressee>
           ))}
