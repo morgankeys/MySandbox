@@ -53,7 +53,9 @@ const StyledLetterBox = styled.div`
 
 const LetterBox = (props) => {
    return (
-      <StyledLetterBox>{props.children}</StyledLetterBox>
+      <Draggable onDrag={props.onDrag}>
+         <StyledLetterBox>{props.children}</StyledLetterBox>
+      </Draggable>
    )
 }
 
@@ -83,38 +85,56 @@ class App extends React.Component {
             "I", "J", "K", "L",
             "M", "N", "O", "P"
          ],
-         BucketLeft: {
+         letterObjects: {},
+         bucketLeft: {
             x: null,
             y: null,
             contains: [],
          },
-         BucketRight: {
+         bucketRight: {
             x: null,
             y: null,
             contains: [],
          },
-         logger: `Logging: x: null y:null`
+         logger: `Logging: null`
      }
      
      this.dragHandler = this.dragHandler.bind(this)
   }
   
-  dragHandler(event, data) {
-     this.setState({
+  dragHandler(event, data, letterObject) {
+      this.setState({
+      //   letterObjects[letterObject.letter]:
         logger: `Logging: x:${data.x} y:${data.y}`})
+  }
+
+  createLetterObjects(letters) {
+      this.state.letters.map(l => 
+         this.state.letterObjects[l] = {
+            letter: l,
+            x: null,
+            y: null,
+            sorted: false
+         }
+      )
   }
   
   render() {
+     this.createLetterObjects()
+     console.log(this.state.letterObjects)
+
      return (
      <Frame>
-           <Half>
-               {this.state.letters.map(l => 
-                  <Draggable onDrag={this.dragHandler}>
-                     <LetterBox key={l}>{l}</LetterBox>
-                  </Draggable>
+           <Half key="top">
+               {this.state.letterObjects.map(l => 
+                  <LetterBox 
+                     key={l} 
+                     onDrag={
+                        this.dragHandler(l)
+                     }>{l}</LetterBox>
                )}
             </Half>
-            <Half>
+            <Half key="bottom">
                <Bucket key="left">Left Bucket</Bucket>
                <Bucket key="right">Right Bucket</Bucket>
             </Half>
