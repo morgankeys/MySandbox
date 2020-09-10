@@ -1,9 +1,9 @@
-import React from "react";
-import logo from "./logo.svg";
+import React from "react"
+import logo from "./logo.svg"
 
-import styled from "styled-components";
+import styled from "styled-components"
 
-import Draggable from "react-draggable";
+import Draggable from "react-draggable"
 
 const Frame = styled.div`
   position: absolute;
@@ -19,7 +19,7 @@ const Frame = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`;
+`
 
 const StyledBucket = styled.div`
   width: 300px;
@@ -29,11 +29,11 @@ const StyledBucket = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const Bucket = (props) => {
-  return <StyledBucket>{props.children}</StyledBucket>;
-};
+  return <StyledBucket>{props.children}</StyledBucket>
+}
 
 const StyledLetterBox = styled.div`
   border: 1px solid #fff;
@@ -44,15 +44,15 @@ const StyledLetterBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const LetterBox = (props) => {
   return (
     <Draggable onDrag={props.onDrag}>
       <StyledLetterBox>{props.children}</StyledLetterBox>
     </Draggable>
-  );
-};
+  )
+}
 
 const Half = styled.div`
   width: 100%;
@@ -61,46 +61,29 @@ const Half = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-`;
+`
 
 const Logger = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
-`;
+`
 
 class App extends React.Component {
   constructor(props) {
-    super(props);
-    const letters = [
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H",
-      "I",
-      "J",
-      "K",
-      "L",
-      "M",
-      "N",
-      "O",
-      "P",
-    ];
-    let letterObjects = [];
+    super(props)
+
+    const letters = [ "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P"]
+
+    let letterObjects = []
+    
     letters.map( l =>
-      letterObjects.push({
-        letter: l,
+      letterObjects[l] = {
         x: null,
         y: null,
         sorted: false,
-      })
-    );
-
-    console.log(letterObjects)
+      }
+    )
 
     this.state = {
       height: 40,
@@ -116,25 +99,30 @@ class App extends React.Component {
         contains: [],
       },
       logger: `Logging: null`,
-    };
+    }
 
-    this.dragHandler = this.dragHandler.bind(this);
+    this.dragHandler = this.dragHandler.bind(this)
   }
 
-  dragHandler = (letter) => (event, data) => {
-    this.setState({
-      logger: `Logging: x:${data.x} y:${data.y}`,
-    });
-  };
+  dragHandler = (l) => (event, data) => {
+    // console.log(this.state.letterObjects.find(el => el.letter == l.letter))
+    this.setState(prevState => 
+      {
+        let newState = prevState
+        newState.letterObjects[l] = {x: data.x, y: data.y, sorted: false}
+        newState.logger = `Logging: x:${data.x} y:${data.y}`
+        return newState
+      })
+    console.log(this.state.letterObjects[l])
+  }
 
   render() {
-    console.log(this.state)
     return (
       <Frame>
         <Half key="top">
-          {this.state.letterObjects.map( l => (
-            <LetterBox key={l.letter} onDrag={this.dragHandler(l)}>
-              {l.letter}
+          {Object.keys(this.state.letterObjects).map( l => (
+            <LetterBox key={l} onDrag={this.dragHandler(l)}>
+              {l}
             </LetterBox>
           ))}
         </Half>
@@ -144,8 +132,8 @@ class App extends React.Component {
         </Half>
         <Logger>{this.state.logger}</Logger>
       </Frame>
-    );
+    )
   }
 }
 
-export default App;
+export default App
