@@ -8,7 +8,7 @@ const handleKeypress = (event) => {
     switch (event.key) {
         case "Backspace" || "Delete":
             buffer.pop()
-        case "Shift" || "Alt" || "Control":
+        case "Shift" || "Alt" || "Control" || "Meta":
             break
         default:
             buffer.push(event.key)
