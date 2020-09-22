@@ -15,4 +15,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.cursor {
+  animation: flash .5s infinite;
+
+  @keyframes flash {
+    from { opacity: 1.0}
+    to { opacity: 0.0}
+  }
 }
