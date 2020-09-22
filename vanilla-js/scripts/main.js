@@ -3,19 +3,23 @@ const appDiv = document.querySelector('.app');
 let buffer = []
 
 const handleKeypress = (event) => {
-    if (event.code == "Backspace" || event.code == "Delete") {
-        buffer.pop()
-    } else {
-        buffer.push(event.key)
+    console.log(event)
+
+    switch (event.key) {
+        case "Backspace" || "Delete":
+            buffer.pop()
+        case "Shift" || "Alt" || "Control":
+            break
+        default:
+            buffer.push(event.key)
     }
     update()
 }
 
 const update = () => {
     let bufferString = ''
-    for (let i = 0; i<buffer.length; i++) {
-        bufferString = bufferString+buffer[i]
-    }
+    buffer.map(char => bufferString = bufferString+char)
+
     appDiv.innerHTML = `<div class="frame"><h1>${bufferString}<span class="cursor">|</h1></div>`
 }
 
