@@ -31,14 +31,24 @@ const MarqueeIcon = styled.div`
       display: inline-div;
       width: 200%;
       
-      @keyframes slide{
-         start { transform: translateX(0%); }
-         50% { transform: translateX(0%); }
-         75% { transform: translateX(-50%); }
-         end { transform: translateX(0%); }
-      }
+      // @keyframes slide{
+      //    start { transform: translateX(0%); }
+      //    50% { transform: translateX(0%); }
+      //    75% { transform: translateX(-50%); }
+      //    end { transform: translateX(0%); }
+      // }
 
-      animation: slide 4s ease-in-out infinite;
+      // animation: slide 4s ease-in-out infinite;
+
+      &:hover { 
+         @keyframes slide {
+            start { transform: translateX(0%); }
+            30% { transform: translateX(-50%); }
+            50% { transform: translateX(0%); }
+            end { transform: translateX(0%); }
+         }
+         animation: slide 2s ease-in-out infinite;
+      }
    }
 
    svg {
@@ -69,8 +79,8 @@ class App extends React.Component {
             {/* <div><Twitter/></div>
             <div><X/></div> */}
             <div>
-               <Twitter/>
                <X/>
+               <Twitter/>
             </div>
            </MarqueeIcon>
      </Frame>
