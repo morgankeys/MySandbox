@@ -3,6 +3,9 @@ import logo from './logo.svg';
 
 import styled from 'styled-components'
 
+import {ReactComponent as Twitter} from "./logos/Twitter-Gray.svg"
+import {ReactComponent as X} from "./logos/X-Gray.svg"
+
 const Frame = styled.div`
    position: absolute;
    top: 0;
@@ -16,6 +19,33 @@ const Frame = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
+`
+
+const MarqueeIcon = styled.div`
+   width: 256px;
+   height: 256px;
+   
+   overflow: clip;
+
+   div {
+      display: inline-div;
+      width: 200%;
+      
+      @keyframes slide{
+         start { transform: translateX(0%); }
+         50% { transform: translateX(0%); }
+         75% { transform: translateX(-50%); }
+         end { transform: translateX(0%); }
+      }
+
+      animation: slide 4s ease-in-out infinite;
+   }
+
+   svg {
+      height: 50%;
+      width: 50%;
+      
+   }
 `
 
 class App extends React.Component {
@@ -35,9 +65,14 @@ class App extends React.Component {
   render() {
      return (
      <Frame>
-           <h3>
-              Hello world!
-           </h3>
+           <MarqueeIcon>
+            {/* <div><Twitter/></div>
+            <div><X/></div> */}
+            <div>
+               <Twitter/>
+               <X/>
+            </div>
+           </MarqueeIcon>
      </Frame>
   );
 }
