@@ -1,21 +1,22 @@
-const appDiv = document.querySelector('.app');
-appDiv.innerHTML = '<div class="frame"><h1>Hello World!!</h1></div>';
+// Set up to pass in a custom JSON theme
+import { SurveyCreatorModel } from "survey-creator-core";
+// import * as surveyTheme from "../styles/survey_theme.json";
+// const surveyJson = { ... };
+// const survey = new Model(surveyJson);
 
-class MyElement extends HTMLElement {
-    constructor() {
-      super();
-      // Attach a shadow DOM to the custom element.
-      const shadow = this.attachShadow({ mode: 'open' });
-  
-      // Create some content inside the shadow DOM.
-      const wrapper = document.createElement('span');
-      wrapper.textContent = "Hello, I'm a custom element!";
-  
-      // Append the created elements to the shadow DOM.
-      shadow.appendChild(wrapper);
-    }
-  }
-  
-  // Define the new custom element.
-  customElements.define('my-element', MyElement);
-  
+
+// Editor options
+const creatorOptions = {
+  showLogicTab: true,
+  isAutoSave: true,
+  showThemeTab: false
+};
+
+// survey.applyTheme({surveyTheme});
+
+// Render the Survey creator
+const creator = new SurveyCreator.SurveyCreator(creatorOptions);
+
+document.addEventListener("DOMContentLoaded", function() {
+  creator.render(document.getElementById("surveyCreator"));
+});
