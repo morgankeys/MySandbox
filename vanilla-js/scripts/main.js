@@ -1,21 +1,38 @@
 // Set up to pass in a custom JSON theme
-import { SurveyCreatorModel } from "survey-creator-core";
-// import * as surveyTheme from "../styles/survey_theme.json";
-// const surveyJson = { ... };
-// const survey = new Model(surveyJson);
+//import * as surveyJson from "../styles/survey_theme.json";
+//import { SurveyCreatorModel } from "survey-creator-core";
 
-
-// Editor options
 const creatorOptions = {
   showLogicTab: true,
   isAutoSave: true,
-  showThemeTab: false
+  // showThemeTab: false
 };
 
-// survey.applyTheme({surveyTheme});
-
-// Render the Survey creator
 const creator = new SurveyCreator.SurveyCreator(creatorOptions);
+
+
+// ChatGPT suggestion
+fetch('./styles/survey_theme.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json(); // Parse the JSON from the file
+  })
+  .then(data => {
+    console.log("JSON Data:", data);
+
+    // Use the JSON data to apply theme or customize your survey
+    creator.theme = data; // Apply the loaded JSON theme to the survey
+
+  })
+  .catch(error => {
+    console.error('There was a problem with the fetch operation:', error);
+  });
+
+
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
   creator.render(document.getElementById("surveyCreator"));
