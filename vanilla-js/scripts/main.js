@@ -5,7 +5,6 @@
 const creatorOptions = {
   showLogicTab: true,
   isAutoSave: true,
-  // showThemeTab: false
 };
 
 const creator = new SurveyCreator.SurveyCreator(creatorOptions);
@@ -15,7 +14,7 @@ const creator = new SurveyCreator.SurveyCreator(creatorOptions);
 fetch('./styles/survey_theme.json')
   .then(response => {
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error('Couldn\'t load theme file...');
     }
     return response.json(); // Parse the JSON from the file
   })
@@ -31,9 +30,8 @@ fetch('./styles/survey_theme.json')
   });
 
 
-
-
-
 document.addEventListener("DOMContentLoaded", function() {
   creator.render(document.getElementById("surveyCreator"));
 });
+
+  // showThemeTab: false
