@@ -33,5 +33,3 @@ fetch('./styles/survey_theme.json')
 document.addEventListener("DOMContentLoaded", function() {
   creator.render(document.getElementById("surveyCreator"));
 });
-
-  // showThemeTab: false
