@@ -1,4 +1,7 @@
 .DS_Store
+node_modules
+*/dist
+
 react-sandbox/node_modules
 
 vanilla-js/node_modules
