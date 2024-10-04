@@ -1,7 +1,10 @@
 .DS_Store
 react-sandbox/node_modules
 
+node_modules
+
 vanilla-js/node_modules
+vanilla-js/dist
 
 twilio/node-react/node_modules
 twilio/node-react/twilio.env
