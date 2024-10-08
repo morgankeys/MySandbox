@@ -7,7 +7,8 @@
       "test": "echo \"Error: no test specified\" && exit 1",
       "start:prod": "npm run build:css & static",
       "start:webpack": "webpack serve --open",
-      "start": "npm run build:css-watch & static",
+      "start": "npm run build & static",
+      "build": "webpack build && sass styles:styles",
       "build:css": "sass styles:styles",
       "build:css-watch": "sass --watch styles:styles"
     },
