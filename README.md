@@ -13,3 +13,4 @@ Use this repo as a sandbox to start hacking with all the packages, features and 
 - Processing - Trying out data visualizations and basic agent-based simulations
 - Twilio - Play with text-messaging!
 - Xcode - Try my hand at iOS or swift dev
+- Agentic-harness - Node experiment exploring an agentic coding harness, borrowing ideas from OpenCode

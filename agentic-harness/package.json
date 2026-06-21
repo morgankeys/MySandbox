@@ -1,0 +1,13 @@
+{
+  "name": "agentic-harness",
+  "version": "0.0.1",
+  "description": "Sandbox for exploring an agentic coding harness, inspired by OpenCode",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "morgan.keys@gmail.com",
+  "license": "ISC"
+}
