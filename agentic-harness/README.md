@@ -13,6 +13,8 @@ The goal is to understand the moving parts of an agent loop by building a small 
 
 This is a scaffold, not a finished app. `src/index.js` sketches the loop with stubbed pieces so the structure is visible before wiring in a real model.
 
+📄 **See [`RESEARCH.md`](./RESEARCH.md)** for a deep-dive into how OpenCode builds its agent harness and which patterns we're borrowing (and which we're deliberately skipping).
+
 ## Getting started
 ```bash
 cd agentic-harness
