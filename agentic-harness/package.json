@@ -6,8 +6,13 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
+    "imagebot": "node imagebot/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "morgan.keys@gmail.com",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.105.0",
+    "@google/genai": "^2.9.0"
+  }
 }

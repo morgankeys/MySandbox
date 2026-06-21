@@ -15,6 +15,8 @@ This is a scaffold, not a finished app. `src/index.js` sketches the loop with st
 
 📄 **See [`RESEARCH.md`](./RESEARCH.md)** for a deep-dive into how OpenCode builds its agent harness and which patterns we're borrowing (and which we're deliberately skipping).
 
+🤖 **See [`imagebot/`](./imagebot/)** for the first concrete build on these patterns: a chat bot that batches image-creation requests — an agent rewrites one brief into N variations (Claude), generates them (Google Imagen), and runs vision-based quality control with regeneration.
+
 ## Getting started
 ```bash
 cd agentic-harness
